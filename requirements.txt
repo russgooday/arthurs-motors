@@ -1,0 +1,10 @@
+fastapi[all]
+python-dotenv
+sqlalchemy
+pandas
+pyarrow
+pg8000
+Jinja2
+pylint
+pytest
+pytest-testdox

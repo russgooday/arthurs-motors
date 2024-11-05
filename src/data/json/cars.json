@@ -1,0 +1,204 @@
+[
+    {
+        "model": "5 Series",
+        "make": "BMW",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red", "green", "beige", "bronze", "brown"],
+        "retail_price": 54000
+    },
+    {
+        "model": "3 Series",
+        "make": "BMW",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid", "electric"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red", "green", "beige", "bronze", "brown"],
+        "retail_price": 42000
+    },
+    {
+        "model": "1 Series",
+        "make": "BMW",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel","hybrid"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red", "green", "beige", "bronze", "brown"],
+        "retail_price": 37000
+    },
+    {
+        "model": "X5",
+        "make": "BMW",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red", "green", "beige", "bronze", "brown"],
+        "retail_price": 85000
+    },
+    {
+        "model": "Focus",
+        "make": "Ford",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red", "green", "brown", "gold", "multicolour", "orange", "purple", "yellow"],
+        "retail_price": 33000
+    },
+    {
+        "model": "Kuga",
+        "make": "Ford",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid", "electric"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red", "green", "brown", "gold", "orange", "purple", "yellow"],
+        "retail_price": 36000
+    },
+    {
+        "model": "Puma",
+        "make": "Ford",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid", "electric"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red", "green", "brown", "gold", "orange", "purple", "yellow"],
+        "retail_price": 28000
+    },
+    {
+        "model": "model y",
+        "make": "tesla",
+        "transmissions": ["automatic"],
+        "fuel_types": ["electric"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red"],
+        "retail_price": 56000
+    },
+    {
+        "model": "Model 3",
+        "make": "Tesla",
+        "transmissions": ["automatic"],
+        "fuel_types": ["electric"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red"],
+        "retail_price": 42000
+    },
+    {
+        "model": "Golf",
+        "make": "Volkswagen",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red", "green", "beige", "brown", "gold", "orange", "purple", "yellow"],
+        "retail_price": 32000
+    },
+    {
+        "model": "Polo",
+        "make": "Volkswagen",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red", "green", "beige", "brown", "gold", "orange", "purple", "yellow"],
+        "retail_price": 29000
+    },
+    {
+        "model": "Passat",
+        "make": "Volkswagen",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black", "blue", "grey", "white", "silver", "red", "green", "beige", "brown", "gold", "orange", "purple", "yellow"],
+        "retail_price": 42000
+    },
+    {
+        "model": "Corolla",
+        "make": "Toyota",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","green","bronze","brown","gold"],
+        "retail_price": 32000
+
+    },
+    {
+        "model": "Yaris",
+        "make": "Toyota",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","green","bronze","brown","gold","multicolour","orange","pink","purple","yellow"],
+        "retail_price": 25000
+    },
+    {
+        "model": "RAV4",
+        "make": "Toyota",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","green","bronze","brown","gold"],
+        "retail_price": 38000
+    },
+    {
+        "model": "A3",
+        "make": "Audi",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","green","beige","bronze","brown","gold","purple","yellow"],
+        "retail_price": 32000
+    },
+    {
+        "model": "A4",
+        "make": "Audi",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","green","beige","bronze","brown","gold","purple","yellow"],
+        "retail_price": 42000
+    },
+    {
+        "model": "A6",
+        "make": "Audi",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","green","beige","bronze","brown","gold","purple","yellow"],
+        "retail_price": 48000
+    },
+    {
+        "model": "Q5",
+        "make": "Audi",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","green","beige","bronze","brown","gold","purple","yellow"],
+        "retail_price": 48000
+    },
+    {
+        "model": "Juke",
+        "make": "Nissan",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","bronze","brown","multicolour","orange","yellow"],
+        "retail_price": 23000
+    },
+    {
+        "model": "Qashqai",
+        "make": "Nissan",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","bronze","brown","multicolour","orange","yellow"],
+        "retail_price": 31000
+
+    },
+    {
+        "model": "Leaf",
+        "make": "Nissan",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","bronze","brown","multicolour","orange","yellow"],
+        "retail_price": 18000
+    },
+    {
+        "model": "C-Class",
+        "make": "Mercedes-Benz",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","bronze","brown","multicolour","orange","yellow"],
+        "retail_price": 42000
+    },
+    {
+        "model": "E-Class",
+        "make": "Mercedes-Benz",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","bronze","brown","multicolour","orange","yellow"],
+        "retail_price": 55000
+    },
+    {
+        "model": "GLA",
+        "make": "Mercedes-Benz",
+        "transmissions": ["manual", "automatic"],
+        "fuel_types": ["petrol", "diesel", "hybrid"],
+        "colours": ["black","blue","grey","white","silver","red","bronze","brown","multicolour","orange","yellow"],
+        "retail_price": 39000
+    }
+]
