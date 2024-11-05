@@ -8,35 +8,23 @@ The cars and locations are randomly chosen and a random age and mileage are adde
 
 ![cars for sale json](images/readme/generated_cars_json.jpg)
 
-From the generated json, with the help of Pandas and SQL Alchemy a relational database is created.
+From the generated json, with the help of Pandas and SQL Alchemy a relational database will be created.
 
-The *relationships* I see as follows:
+### Tables and relations:
 
-**Towns and Counties** (many-to-many)
-A county has many towns
-A town has many counties
+- **Towns and Counties** (many-to-many): A county has many towns. A town has many counties. e.g. The town Newport can be found in Gwent, Isle of Wight and Shropshire
 
-e.g. The town Newport can be found in Gwent, Isle of Wight and Shropshire
+- **Makes and Models** of car (one-to-many): A make can have many models. A model has only one make
 
-**Makes and Models** of car (one-to-many)
-A make can have many models
-A model has only one make
+- **Models and Colours** (many-to-many): A model can have many colours. A colour can have many models
 
-**Models and Colours** (many-to-many)
-A model can have many colours
-A colour can have many models
+- **Models and Fuel Types** (many-to-many): A model can have a few fueltypes. A fueltype can have many models
 
-**Models and Fuel Types** (many-to-many)
-A model can have a few fueltypes
-A fueltype can have many models
+- **Models and Transmissions** (many-to-many): A model can have a few transmission types. A transmission type can have many models
 
-**Models and Transmissions** (many-to-many)
-A model can have a few transmission types
-A transmission type can have many models
 
-The database will be created using Postgres SQL.
 
-An ERD diagram to illustrate:
+An **ERD** diagram to illustrate:
 ![cars for sale tables](images/readme/cars_for_sale.jpg)
 
 ## Front End Task
