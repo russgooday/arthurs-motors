@@ -10,6 +10,8 @@ The cars and locations are randomly chosen and a random age and mileage are adde
 
 From the generated json, with the help of Pandas and SQL Alchemy a relational database will be created.
 
+![cars for sale entity relationship diagram](images/readme/cars-for-sale-ERD.jpg)
+
 ## Front End Task
 
 The goal is to create a form that will allow you to filter through the cars, based on make, model, colour, mileage, location etc. I would like the form to update available selections as you input with a current number of available cars based on the selected filters.
