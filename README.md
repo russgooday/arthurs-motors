@@ -10,7 +10,7 @@ The cars and locations are randomly chosen and a random age and mileage are adde
 
 From the generated json, with the help of Pandas and SQL Alchemy a relational database will be created.
 
-![cars for sale entity relationship diagram](images/readme/cars-for-sale-ERD.jpg)
+![cars for sale entity relationship diagram](images/readme/cars-for-sale-ERD.png)
 
 ## Front End Task
 
