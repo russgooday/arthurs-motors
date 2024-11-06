@@ -4,9 +4,9 @@ Building a mock automative marketplace.
 ## Initial Task
 I have created some sample json data for **cars** and **locations** with which a mock database of cars for sale will be created.
 
-The cars and locations are randomly chosen and a random age and mileage are added. Based on the mileage, age and the car's initial RRP a price is calculated. This is then save as a json file.
+The cars, customers and locations are randomly chosen and a random age and mileage are then added. Based on the mileage, age and the car's initial RRP a price is calculated. This is then save as a json file.
 
-![cars for sale json](images/readme/generated_cars_json.jpg)
+![cars for sale json](images/readme/cars_for_sale_json.jpg)
 
 From the generated json, with the help of Pandas and SQL Alchemy a relational database will be created.
 
