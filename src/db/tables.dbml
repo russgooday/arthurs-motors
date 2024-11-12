@@ -1,16 +1,27 @@
+enum fuel_types {
+    petrol
+    diesel
+    electric
+    hybrid
+}
+
+enum transmission_types {
+    manual
+    automatic
+    "semi-automatic"
+}
+
+TABLE customer {
+    customer_id INTERGER [primary key]
+    first_name VARCHAR
+    last_name VARCHAR
+    town_name VARCHAR
+    county_id INTEGER [ref: > counties.county_id]
+}
+
 TABLE counties {
     county_id INTEGER [primary key]
     county_name VARCHAR
-}
-
-TABLE towns {
-    town_id INTEGER [primary key]
-    town_name VARCHAR
-}
-
-TABLE towns_counties {
-    town_id INTEGER     [ref: > towns.town_id]
-    county_id INTEGER   [ref: > counties.county_id]
 }
 
 TABLE makes {
@@ -22,48 +33,24 @@ TABLE models {
     model_id INTEGER [primary key]
     model_name VARCHAR
     make_id INTEGER [ref: > makes.make_id]
-    town_id INTEGER [ref: < towns_counties.town_id]
 }
 
-/* Options and Junction Tables */
 TABLE colours {
     colour_id INTEGER [primary key]
     colour_name VARCHAR
 }
 
-TABLE models_colours {
-    model_id INTEGER  [ref: > models.model_id]
-    colour_id INTEGER [ref: > colours.colour_id]
-}
 
-TABLE fuel_types {
-    fuel_type_id INTEGER [primary key]
-    fuel_type VARCHAR
-}
-
-TABLE models_fuel_types {
-    model_id INTEGER      [ref: > models.model_id]
-    fuel_type_id INTEGER  [ref: > fuel_types.fuel_type_id]
-}
-
-TABLE transmissions {
-    transmission_id INTEGER [primary key]
-    transmission_name VARCHAR
-}
-
-TABLE models_transmissions {
-    model_id INTEGER        [ref: > models.model_id]
-    transmission_id INTEGER [ref: > transmissions.transmission_id]
-}
-
+/* Cars for sale table */
 TABLE cars_for_sale {
     car_id INTEGER [primary key]
     model_id INTEGER            [ref: > models.model_id]
-    colour_id INTEGER           [ref: > models_colours.colour_id]
-    fuel_type_id INTEGER        [ref: > models_fuel_types.fuel_type_id]
-    transmission_id INTEGER     [ref: > models_transmissions.transmission_id]
-    town_id INTEGER             [ref: > towns_counties.town_id]
+    colour_id INTEGER           [ref: > colours.colour_id]
+    fuel_type fuel_types
+    transmission_type transmission_types
+    customer_id INTEGER         [ref: > customer.customer_id]
     year INTEGER
     price FLOAT
     mileage INTEGER
+    description TEXT
 }

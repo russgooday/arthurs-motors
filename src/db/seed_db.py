@@ -7,11 +7,9 @@ from .table_classes import (
     Makes,
     Models,
     Colours,
-    FuelTypes,
-    Transmissions,
     Counties,
-    Towns,
-    Cars
+    Customers,
+    CarsForSale
 )
 
 
@@ -53,40 +51,14 @@ def create_makes_table(car_data: pd.DataFrame) -> pd.DataFrame:
 def create_colours_table(car_data: pd.DataFrame) -> pd.DataFrame:
     ''' creates a car colours series indexed from 1 '''
     return create_indexed_column(
-        car_data['color'], new_column_name='colour_name', index='colour_id', unique=True
-    )
-
-
-# Car Fuel Types
-def create_fuel_types_table(car_data: pd.DataFrame) -> pd.DataFrame:
-    ''' creates a car fuel types series indexed from 1 '''
-    return create_indexed_column(car_data['fuel_type'], unique=True)
-
-
-# Car Transmissions
-def create_transmissions_table(car_data: pd.DataFrame) -> pd.DataFrame:
-    ''' creates a car transmissions series indexed from 1 '''
-    return create_indexed_column(
-        car_data['transmission'], new_column_name='transmission_type', unique=True
+        car_data['colours'].explode(), new_column_name='colour_name', index='colour_id', unique=True
     )
 
 
 # Locations Counties
-def create_counties_table(locations: pd.DataFrame) -> pd.DataFrame:
+def create_counties_table(customers: pd.DataFrame) -> pd.DataFrame:
     ''' creates a car counties series indexed from 1 '''
-    return create_indexed_column(locations['county'], new_column_name='county_name', unique=True)
-
-
-# Locations Towns
-def create_towns_table(locations: pd.DataFrame, counties: pd.DataFrame) -> pd.DataFrame:
-    ''' creates a car towns series indexed from 1 '''
-    towns_joined = (
-        pd.merge(locations, counties.reset_index(), left_on='county', right_on='county_name')
-            .rename(columns={'town': 'town_name'})
-            .set_index(pd.Index(range(1, locations.index.size + 1), name='town_id'))
-    )
-
-    return towns_joined[['town_name', 'county_id']]
+    return create_indexed_column(customers['county'], new_column_name='county_name', unique=True)
 
 
 # Car Models
@@ -107,8 +79,25 @@ def create_models_table(
         car_models.set_index(pd.Index(range(1, car_models.index.size + 1), name='model_id'))
     )
 
+# Customers
+def create_customers_table(
+        customers: pd.DataFrame,
+        counties: pd.DataFrame
+) -> pd.DataFrame:
+    ''' creates a customers series indexed from 1 with reference to counties '''
+    customers = pd.merge(
+        customers, counties.reset_index(),
+        left_on='county', right_on='county_name'
+    )
 
-def create_cars(car_data: pd.DataFrame, tables: dict = None) -> pd.DataFrame:
+    return (
+        customers[['first_name', 'last_name', 'town', 'county_id']]
+            .rename(columns={'town': 'town_name'})
+            .set_index(pd.Index(range(1, customers.index.size + 1), name='customer_id'))
+    )
+
+
+def create_cars_for_sale(cars_for_sale: pd.DataFrame, tables: dict = None) -> pd.DataFrame:
     ''' creates a car series indexed from 1 with reference to the other tables '''
     if not isinstance(tables, dict):
         return None
@@ -116,51 +105,31 @@ def create_cars(car_data: pd.DataFrame, tables: dict = None) -> pd.DataFrame:
     # Move indexes to columns to make name, id columns accessible
     fk_model_ids = tables[Models].reset_index()
     fk_colour_ids = tables[Colours].reset_index()
-    fk_fuel_type_ids = tables[FuelTypes].reset_index()
-    fk_transmission_ids = tables[Transmissions].reset_index()
-    fk_town_ids = pd.merge(tables[Towns].reset_index(), tables[Counties], on='county_id')
 
     # Replace the car data column data with the foreign key ids
 
     # car models
     model_ids = pd.merge(
-        car_data['model'], fk_model_ids,
+        cars_for_sale['model'], fk_model_ids,
         left_on='model', right_on='model_name'
     )
 
     # car colours
     colour_ids = pd.merge(
-        car_data['color'], fk_colour_ids,
+        cars_for_sale['color'], fk_colour_ids,
         left_on='color', right_on='colour_name'
-    )
-
-    # car fuel types
-    fuel_type_ids = pd.merge(
-        car_data['fuel_type'], fk_fuel_type_ids,
-        left_on='fuel_type', right_on='fuel_type'
-    )
-
-    # car transmission types
-    transmission_ids = pd.merge(
-        car_data['transmission'], fk_transmission_ids,
-        left_on='transmission', right_on='transmission_type'
-    )
-
-    # towns
-    town_ids = pd.merge(
-        car_data, fk_town_ids,
-        left_on=['location.town', 'location.county'], right_on=['town_name', 'county_name']
     )
 
     cars = pd.DataFrame({
         'model_id': model_ids['model_id'],
         'colour_id': colour_ids['colour_id'],
-        'fuel_type_id': fuel_type_ids['fuel_type_id'],
-        'transmission_id': transmission_ids['transmission_id'],
-        'town_id': town_ids['town_id'],
-        'year': car_data['year'],
-        'price': car_data['price'],
-        'mileage': car_data['mileage']
+        'fuel_type': cars_for_sale['fuel_type'].str.lower(),
+        'transmission_type': cars_for_sale['transmission'].str.lower(),
+        'customer_id': cars_for_sale['customer_id'],
+        'year': cars_for_sale['year'],
+        'price': cars_for_sale['price'],
+        'mileage': cars_for_sale['mileage'],
+        'description': cars_for_sale['description']
     })
 
     return cars.set_index(pd.Index(range(1, cars.index.size + 1), name='car_id'))
@@ -172,36 +141,32 @@ def create_tables():
     Base.metadata.create_all(engine)
 
     if not (session := create_session()):
-        return None
+        return 'Failed to create session'
 
     with session.begin():
-        cars_df = pd.load_json('data/json/cars.json')
-        locations_df = pd_load_json('data/json/locations.json')
+        cars_df = pd_load_json('data/json/cars.json')
+        customers_df = pd_load_json('data/json/customers.json')
         cars_for_sale_df = normalize(load_json_data('data/json/cars_for_sale.json'))
-
         car_makes_df = create_makes_table(cars_df)
-        counties_df = create_counties_table(locations_df)
+        counties_df = create_counties_table(customers_df)
 
         tables = {
             Makes: car_makes_df,
             Counties: counties_df,
             Models: create_models_table(cars_df, car_makes_df),
-            Colours: create_colours_table(cars_for_sale_df),
-            FuelTypes: create_fuel_types_table(cars_for_sale_df),
-            Transmissions: create_transmissions_table(cars_for_sale_df),
-            Towns: create_towns_table(locations_df, counties_df)
+            Colours: create_colours_table(cars_df),
+            Customers: create_customers_table(customers_df, counties_df)
         }
 
-        cars_df = create_cars(cars_for_sale_df, tables=tables)
+        cars_df = create_cars_for_sale(cars_for_sale_df, tables=tables)
 
         for table, df in tables.items():
             records = df.to_dict('records')
             session.execute(insert(table).values(records))
 
-        # print(cars_for_sale_df)
-        session.execute(insert(Cars).values(cars_df.to_dict('records')))
+        session.execute(insert(CarsForSale).values(cars_df.to_dict('records')))
 
-
+    return 'Tables created successfully!!'
 
 if __name__ == '__main__':
-    create_tables()
+    print(create_tables())

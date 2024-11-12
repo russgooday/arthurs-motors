@@ -2,6 +2,7 @@
 import json
 from random import choice, randint
 import numpy as np
+from lorem.text import TextLorem
 from .customers_gen import generate_customers
 from ..dependencies import ROOT_PATH
 from ..utils.file_utils import load_json_data
@@ -48,6 +49,7 @@ def generate_car_entry(car: dict, customer: dict) -> dict:
 
     details['mileage'] = calculate_mileage(details['year'])
     details['price'] = calculate_price(details['year'], car['retail_price'], details['mileage'])
+    details['description'] = TextLorem(srange=(10,20), prange=(2,2)).paragraph()
 
     return details
 
