@@ -1,0 +1,31 @@
+{# templates/index.html #}
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <script src='https://unpkg.com/htmx.org@2.0.1'></script>
+    <title>Arthur's Motors: Home Page</title>
+</head>
+
+<body>
+    <h1>Arthur's Motors</h1>
+    <div class='container'>
+        <form>
+            <label for='search_term'>Location</label>
+            <input
+                name='search_term'
+                type='text'
+                list='locations'
+                hx-get='/api/locations'
+                hx-target='#locations'
+                hx-trigger='input delay:250ms'
+            >
+            <datalist id='locations'></datalist>
+        </form>
+    </div>
+    <div class='container' id='treasures_table'></div>
+</body>
+
+</html>
