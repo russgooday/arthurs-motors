@@ -30,7 +30,7 @@ def get_healthcheck() -> Dict:
 # Fetch all treasures
 # Returns an datalist of all matching locations
 @router.get('/api/locations', response_class=HTMLResponse)
-def get_treasures(request: Request, search_term:str = '') -> HTMLResponse:
+def get_locations(request: Request, search_term:str = '') -> HTMLResponse:
     ''' return all treasures and their shop details '''
     locations = []
 
