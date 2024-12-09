@@ -19,7 +19,8 @@ The goal is to create a form that will allow you to filter through the cars, bas
 The results will be displayed in rows and ideally will have clip images. I would also like to implement pagination for the results page.
 
 A mock up of the form is shown below:
-![https://codepen.io/rpg2019/pen/QwLEpwj](images/readme/mock_up_search_form.jpg)
+![mockup of car image with search form](images/readme/mock_up_search_form.jpg)
+[Link to codepen responsive mockup](https://codepen.io/rpg2019/pen/QwLEpwj)
 
 ## Learning goals
 
